@@ -9,6 +9,9 @@ public class Base64Translator {
 
 	private byte[] dataBytes = null;
 	private int conversionType = -1;
+	public static final int DECODE = 1;
+	public static final int ENCODE = 0;
+	
 	
 	public Base64Translator() {
 		//

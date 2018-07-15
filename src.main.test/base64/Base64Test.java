@@ -33,9 +33,65 @@ public class Base64Test {
 			fail();
 		}
 		
+		Base64Translator translatorForDecode =  new Base64Translator( strAsByteArray );
+		translatorForDecode.setConversionType(Base64Translator.DECODE);
+		ByteSource byteSourceForDecode = translatorForDecode.getConvertedByteSource();
+		
+		Base64Translator translatorForEncode =  new Base64Translator( byteSourceForDecode.getDataBytes() );
+		translatorForEncode.setConversionType(Base64Translator.ENCODE);
+		ByteSource byteSourceForEncode = translatorForEncode.getConvertedByteSource();
+
+		assertEquals( testString, byteSourceForEncode.getStringBytes() );
+	}
+	
+	@Test
+	public void testDecode() {
+		
+		String testStringDecoded = "https://www.amazon.com/StrivedayTM-Solid-Electric-gauge-32-8ft/dp/B077HWS5X" +
+							"V/ref=sr_1_4?s=hi&ie=UTF8&qid=1530588963&sr=1-4&keywords=24+awg+solid+wire";
+		
+		String testString = "aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9TdHJpdmVkYXlUTS1Tb2xpZC1FbGVjdHJpYy" +
+								   "1nYXVnZS0zMi04ZnQvZHAvQjA3N0hXUzVYVi9yZWY9c3JfMV80P3M9aGkmaWU9VVRGO" +
+								   "CZxaWQ9MTUzMDU4ODk2MyZzcj0xLTQma2V5d29yZHM9MjQrYXdnK3NvbGlkK3dpcmU=";
+		
+		byte[] strAsByteArray = null;
+		
+		try {
+			strAsByteArray = testString.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			fail();
+		}
+		
 		Base64Translator translator =  new Base64Translator( strAsByteArray );
+		translator.setConversionType(Base64Translator.DECODE);
 		ByteSource byteSource = translator.getConvertedByteSource();
 
-		assertEquals( testString, new String(byteSource.getDataBytes()) );
+		assertEquals( testStringDecoded, byteSource.getStringBytes() );
 	}
+	
+	@Test
+	public void testEncode() {
+		
+		String testString = "https://www.amazon.com/StrivedayTM-Solid-Electric-gauge-32-8ft/dp/B077HWS5X" +
+							"V/ref=sr_1_4?s=hi&ie=UTF8&qid=1530588963&sr=1-4&keywords=24+awg+solid+wire";
+		
+		String testStringEncoded = "aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9TdHJpdmVkYXlUTS1Tb2xpZC1FbGVjdHJpYy" +
+								   "1nYXVnZS0zMi04ZnQvZHAvQjA3N0hXUzVYVi9yZWY9c3JfMV80P3M9aGkmaWU9VVRGO" +
+								   "CZxaWQ9MTUzMDU4ODk2MyZzcj0xLTQma2V5d29yZHM9MjQrYXdnK3NvbGlkK3dpcmU=";
+		
+		byte[] strAsByteArray = null;
+		
+		try {
+			strAsByteArray = testString.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			fail();
+		}
+		
+		Base64Translator translator =  new Base64Translator( strAsByteArray );
+		translator.setConversionType(Base64Translator.ENCODE);
+		ByteSource byteSource = translator.getConvertedByteSource();
+
+		assertEquals( testStringEncoded, byteSource.getStringBytes() );
+	}
+	
 }

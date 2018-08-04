@@ -55,9 +55,9 @@ public class BaseFrameComponentHolder extends AbstractComponentHolder implements
 		
 		this.myTextListener = new TextListener(this);
 		
-		this.entireOriginalText = new JTextArea();
-		this.entireOriginalText.addCaretListener(myTextListener);
-		this.entireConvertedText = new JTextArea();
+		this.originalText = new JTextArea();
+		this.originalText.addCaretListener(myTextListener);
+		this.convertedText = new JTextArea();
 		
 		this.encodeRadioButton = new JRadioButton(encodeFile);
 		this.decodeRadioButton = new JRadioButton(decodeFile);
@@ -68,18 +68,18 @@ public class BaseFrameComponentHolder extends AbstractComponentHolder implements
 		radioGroup.add(encodeRadioButton);
 		radioGroup.add(decodeRadioButton);
 
-		entireOriginalText.setEditable(true);
-		entireConvertedText.setEditable(true);
+		originalText.setEditable(true);
+		convertedText.setEditable(true);
 		
 		Dimension textDimension = new Dimension( configurationGetter.getTextWidth(), configurationGetter.getTextHeight());
-		entireOriginalText.setPreferredSize( textDimension );
-		entireConvertedText.setPreferredSize( textDimension );
+		originalText.setPreferredSize( textDimension );
+		convertedText.setPreferredSize( textDimension );
 		
 		drawingPanel = new DrawingPanel();
 	}
 	
 	public void setPanelingStructure() {
-		ConversionType conversionTypeListener = new ConversionType( frame , entireOriginalText );
+		ConversionType conversionTypeListener = new ConversionType( frame , originalText );
 		this.fileChooserOpenButton.addActionListener( conversionTypeListener );
 		this.fileChooserSaveButton.addActionListener( conversionTypeListener );
 				
@@ -91,8 +91,8 @@ public class BaseFrameComponentHolder extends AbstractComponentHolder implements
 		topPanel.add(encodeRadioButton);
 		topPanel.add(decodeRadioButton);
 
-		JScrollPane sp1 = new JScrollPane(entireOriginalText, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		JScrollPane sp2 = new JScrollPane(entireConvertedText, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane sp1 = new JScrollPane(originalText, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane sp2 = new JScrollPane(convertedText, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		sp1.setVerticalScrollBar(new JScrollBar());
 		sp2.setVerticalScrollBar(new JScrollBar());
 		
@@ -130,23 +130,39 @@ public class BaseFrameComponentHolder extends AbstractComponentHolder implements
 	}
 	
 	@Override
-	public JTextArea getEntireOriginalText() {
-		return entireOriginalText;
+	public JTextArea getOriginalTextArea() {
+		return originalText;
 	}
 	
 	@Override
-	public void setEntireOriginalText(JTextArea entireOriginalText) {
-		this.entireOriginalText = entireOriginalText;
+	public void setOriginalTextArea(JTextArea entireOriginalText) {
+		this.originalText = entireOriginalText;
+	}
+	
+	public String getOriginalTextString() {
+		return originalText.getText();
+	}
+	
+	public void setOriginalTextString(String newString) {
+		originalText.setText( newString );
 	}
 	
 	@Override
-	public JTextArea getEntireConvertedText() {
-		return entireConvertedText;
+	public JTextArea getConvertedTextArea() {
+		return convertedText;
 	}
 	
 	@Override
-	public void setEntireConvertedText(JTextArea entireConvertedText) {
-		this.entireConvertedText = entireConvertedText;
+	public void setConvertedTextArea(JTextArea entireConvertedText) {
+		this.convertedText = entireConvertedText;
+	}
+	
+	public String getConvertedTextString() {
+		return convertedText.getText();
+	}
+	
+	public void setConvertedTextString(String newString) {
+		convertedText.setText( newString );
 	}
 	
 	@Override

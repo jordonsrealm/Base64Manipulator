@@ -19,18 +19,6 @@ public class BaseFrameListener implements ComponentListener{
 
 
 	@Override
-	public void componentHidden(ComponentEvent arg0) {
-		// not implemented yet
-	}
-
-
-	@Override
-	public void componentMoved(ComponentEvent arg0) {
-		// not implemented yet
-	}
-
-
-	@Override
 	public void componentResized(ComponentEvent arg0) {
 		
 		if(splitPane != null) {
@@ -38,7 +26,16 @@ public class BaseFrameListener implements ComponentListener{
 			splitPane.setDividerLocation( width/2 );
 		}
 	}
+	
+	@Override
+	public void componentHidden(ComponentEvent arg0) {
+		// not implemented yet
+	}
 
+	@Override
+	public void componentMoved(ComponentEvent arg0) {
+		// not implemented yet
+	}
 
 	@Override
 	public void componentShown(ComponentEvent arg0) {

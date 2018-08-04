@@ -17,25 +17,10 @@ import org.apache.logging.log4j.Logger;
 
 public class DrawingPanel extends JPanel {
 
-	/***/
+	private static final Logger logger = LogManager.getLogger(DrawingPanel.class.getName());
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = LogManager.getLogger(DrawingPanel.class.getName());
 	private transient BufferedImage imageToDraw;
 	
-	
-	public DrawingPanel() {
-		//
-	}
-	
-	@Override
-	public Dimension getPreferredSize() {
-		return new Dimension(400,400);
-	}
-	
-	@Override
-	public Dimension getMaximumSize() {
-		return new Dimension(400,400);
-	}
 
 	public void updateComponentWithBytes(byte[] imageBytes) {
 		try {
@@ -51,27 +36,24 @@ public class DrawingPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
-		graphics.setColor(Color.WHITE);
 
 		if(this.imageToDraw != null) {
-			ScaledImage scaledImage = new ScaledImage(imageToDraw, this);
-			
+			ScaledImage scaledImage = new ScaledImage( imageToDraw, this);
 			Dimension centerPoint = scaledImage.getCenterRelativePoint();
 			
-			graphics.fillRect(centerPoint.width, 
-							  centerPoint.height, 
-							  scaledImage.getScaledWidth(), 
-							  scaledImage.getScaledHeight() );
-			
-			graphics.drawImage(scaledImage.getImg(), 
-							  centerPoint.width, 
-							  centerPoint.height, 
-							  scaledImage.getScaledWidth(), 
-							  scaledImage.getScaledHeight(), 
-							  null );
+			graphics.setColor(Color.WHITE);
+			graphics.fillRect(centerPoint.width, centerPoint.height, scaledImage.getScaledWidth(), scaledImage.getScaledHeight() );
+			graphics.drawImage( scaledImage.getImg(), centerPoint.width, centerPoint.height, scaledImage.getScaledWidth(), scaledImage.getScaledHeight(), null);
 		}
 	}
 
-
-
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(400,400);
+	}
+	
+	@Override
+	public Dimension getMaximumSize() {
+		return new Dimension(400,400);
+	}
 }

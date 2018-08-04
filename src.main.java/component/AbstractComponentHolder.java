@@ -15,8 +15,8 @@ import listener.TextListener;
 public abstract class AbstractComponentHolder {
 
 	protected JFrame frame;
-	protected JTextArea entireOriginalText;
-	protected JTextArea entireConvertedText;
+	protected JTextArea originalText;
+	protected JTextArea convertedText;
 	protected JTextField pathToOpenFile;
 	protected JTextField pathToSaveFile;
 	protected JButton fileChooserOpenButton;
@@ -36,50 +36,38 @@ public abstract class AbstractComponentHolder {
 	
 	
 	public abstract JFrame getFrame();
-	
 	public abstract void setFrame(JFrame frame);
 	
-	public abstract JTextArea getEntireOriginalText();
+	public abstract JTextArea getOriginalTextArea();
+	public abstract void setOriginalTextArea(JTextArea entireOriginalText);
 	
-	public abstract void setEntireOriginalText(JTextArea entireOriginalText);
-	
-	public abstract JTextArea getEntireConvertedText();
-	
-	public abstract void setEntireConvertedText(JTextArea entireConvertedText);
+	public abstract JTextArea getConvertedTextArea();
+	public abstract void setConvertedTextArea(JTextArea entireConvertedText);
 	
 	public abstract JTextField getPathToOpenFile();
-	
 	public abstract void setPathToOpenFile(JTextField pathToOpenFile);
 	
 	public abstract JTextField getPathToSaveFile();
-	
 	public abstract void setPathToSaveFile(JTextField pathToSaveFile);
 	
 	public abstract JButton getFileChooserOpenButton();
-	
 	public abstract void setFileChooserOpenButton(JButton fileChooserOpenButton);
 	
 	public abstract JButton getFileChooserSaveButton();
-	
 	public abstract void setFileChooserSaveButton(JButton fileChooserSaveButton);
 	
 	public abstract JRadioButton getEncodeRadioButton();
-	
 	public abstract void setEncodeRadioButton(JRadioButton encodeRadioButton);
 	
 	public abstract JRadioButton getDecodeRadioButton();
-	
 	public abstract void setDecodeRadioButton(JRadioButton decodeRadioButton);
 	
 	public abstract TextListener getMyTextListener();
-	
 	public abstract void setMyTextListener(TextListener myTextListener);
 	
 	public abstract DrawingPanel getDrawingPanel();
-	
 	public abstract void setDrawingPanel(DrawingPanel drawingPanel);
 	
 	public abstract void setJSplitPane(JSplitPane splitPane);
-	
 	public abstract JSplitPane getJSplitPane();
 }

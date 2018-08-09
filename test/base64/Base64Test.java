@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.io.UnsupportedEncodingException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import base.converter.Base64Translator;
 import data.types.ByteSource;

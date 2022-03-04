@@ -7,15 +7,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import component.ColorChooser;
 
 
 public class ConversionType implements ActionListener {
 
-	public static final Logger logger = LogManager.getLogger(Logger.class.getName());
+	public static final Logger logger = LogManager.getLogger(ConversionType.class);
 	private JFrame parentFrame;
 	private JTextArea textArea;
 	
@@ -33,7 +33,7 @@ public class ConversionType implements ActionListener {
 		File file = null;
 		String stringToUse = "";
 		
-		stringToUse = new ColorChooser(parentFrame, file, logger, textArea).openDialogAndGetString(whichButton.getText());
+		stringToUse = new ColorChooser(parentFrame, file, textArea).openDialogAndGetString(whichButton.getText());
 			
 		textArea.setText( stringToUse );
 	}

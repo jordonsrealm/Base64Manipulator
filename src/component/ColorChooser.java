@@ -12,23 +12,24 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 
 public class ColorChooser extends JFileChooser {
 
 	private static final long serialVersionUID = 1L;
+    private static final Logger logger = LogManager.getLogger(ColorChooser.class);
 	private File file;
 	private JFrame parentFrame;
 	private JTextArea textArea;
-	private transient Logger logger;
+
 	private static final String CHOOSE = "Choose File To Open";
 	
 	
-	public ColorChooser(JFrame parentFrame, File file, Logger logger, JTextArea textArea) {
+	public ColorChooser(JFrame parentFrame, File file, JTextArea textArea) {
 		this.parentFrame = parentFrame;
 		this.file = file;
-		this.logger = logger;
 		this.textArea = textArea;
 	}
 	
@@ -54,7 +55,7 @@ public class ColorChooser extends JFileChooser {
 	public String getConvertedByteArray(JFileChooser chooser) {
         file = chooser.getSelectedFile();
         String stringToUse = null;
-        logger.debug( "tryToOpenFile: {}", file.getName());
+        logger.debug("tryToOpenFile: " + file.getName());
         
         byte[] bytesFromFile = new byte[(int) file.length()];
         
@@ -74,7 +75,7 @@ public class ColorChooser extends JFileChooser {
 	
 	public void saveFile(JFileChooser chooser) {
 		file = chooser.getSelectedFile();
-        logger.debug( "saveToFilePath: {}", file.getName());
+        logger.debug( "saveToFilePath: " + file.getName());
         
         try(FileOutputStream fileInputStrm = new FileOutputStream(file)) {
         	byte[] bytesFromFile = Base64.getDecoder().decode( textArea.getText().getBytes() );

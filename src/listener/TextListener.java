@@ -5,8 +5,8 @@ import java.util.Base64;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import base.converter.Base64Translator;
 import main.BaseFrameComponentHolder;
@@ -14,7 +14,7 @@ import main.BaseFrameComponentHolder;
 
 public class TextListener implements CaretListener{
 	
-	private static final Logger logger = LogManager.getLogger(TextListener.class.getName());
+	private static final Logger logger = LogManager.getLogger(TextListener.class);
 	private BaseFrameComponentHolder componentHolder;
 	private int conversionType = 0;
 	private String charSetName = "UTF-8";

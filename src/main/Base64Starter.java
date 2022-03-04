@@ -4,15 +4,15 @@ package main;
 import java.io.IOException;
 import javax.swing.SwingUtilities;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import configuration.ConfigurationGetter;
 
 
-public class BaseFrame {
+public class Base64Starter {
 	
-	static final Logger logger = LogManager.getLogger(BaseFrame.class.getName());
+	static final Logger logger = LogManager.getLogger(Base64Starter.class);
 
 	private ConfigurationGetter configurationGetter;
 	private BaseFrameComponentHolder compHolder;
@@ -21,7 +21,7 @@ public class BaseFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater( () -> {
 				try {
-					new BaseFrame();
+					new Base64Starter();
 				} catch (IOException e) {
 					logger.error("Exception thrown when creating new BaseFrame.", e);
 				}
@@ -29,7 +29,7 @@ public class BaseFrame {
 		);
 	}
 	
-	public BaseFrame() throws IOException {
+	public Base64Starter() throws IOException {
 		configurationGetter = new ConfigurationGetter();
 		
 		compHolder = new BaseFrameComponentHolder(configurationGetter);

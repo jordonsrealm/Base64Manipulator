@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 
 public class ConfigurationGetPropertyValues {
 	
-	public static final Logger logger = LogManager.getLogger(Logger.class.getName());
+    private static final Logger logger = LogManager.getLogger(ConfigurationGetPropertyValues.class);
 	
 	private static final String TEXT_WIDTH = "TEXT_WIDTH";
 	private static final String TEXT_HEIGHT = "TEXT_HEIGHT";
@@ -45,7 +45,7 @@ public class ConfigurationGetPropertyValues {
 			
 			logger.info(newHash + "\nProgram Ran on " + time + " with configurations =" + newHash.size());
 		} catch (Exception e) {
-			logger.error("Exception caught when reading configuration file" , e);
+			logger.error("Exception caught when reading configuration file" + e);
 		}
 		
 		return newHash;

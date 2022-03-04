@@ -2,11 +2,14 @@ package base.converter;
 
 import java.util.Base64;
 
+import org.apache.logging.log4j.Logger;
+
 import data.types.ByteSource;
 
 
 public class Base64Translator {
 
+    private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(Base64Translator.class);
 	private byte[] dataBytes = null;
 	private int conversionType = -1;
 	public static final int DECODE = 1;
@@ -45,16 +48,35 @@ public class Base64Translator {
 		return new String(getB64DecodedBytes(byteSrc));
 	}
 	
-	public byte[] getB64DecodedBytes(byte[] bytesSrc) {
-		return Base64.getDecoder().decode(bytesSrc);
+	public byte[] getB64DecodedBytes(byte[] byteSrc) {
+		try {
+			return Base64.getDecoder().decode(byteSrc);
+		} catch (Exception e) {
+			logger.error("Unable to decode bytes: {}", byteSrc);
+		}
+		
+		return byteSrc;
 	}
 	
 	public String getB64EncoderToEncode(byte[] byteSrc) {
-		return Base64.getEncoder().encodeToString(byteSrc);
+		try {
+			return Base64.getEncoder().encodeToString(byteSrc);
+		} catch (Exception e) {
+			logger.error("Unable to encode bytes: {}", byteSrc);
+		}
+		
+		return "";
 	}
 
-	public byte[] getB64EncodedBytes(byte[] bytesSrc) {
-		return Base64.getEncoder().encode(bytesSrc);
+	public byte[] getB64EncodedBytes(byte[] byteSrc) {
+
+		try {
+			return Base64.getEncoder().encode(byteSrc);
+		} catch (Exception e) {
+			logger.error("Unable to decode bytes: {}", byteSrc);
+		}
+		
+		return byteSrc;
 	}
 
 	public void setDataBytes(byte[] dataBytes) {

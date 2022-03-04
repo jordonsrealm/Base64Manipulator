@@ -7,15 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import component.ColorChooser;
 
 
 public class ConversionType implements ActionListener {
 
-	public static final Logger logger = LogManager.getLogger(ConversionType.class);
+	public static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ConversionType.class);
 	private JFrame parentFrame;
 	private JTextArea textArea;
 	

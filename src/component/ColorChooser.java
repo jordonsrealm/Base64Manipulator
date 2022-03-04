@@ -12,14 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 
 public class ColorChooser extends JFileChooser {
 
 	private static final long serialVersionUID = 1L;
-    private static final Logger logger = LogManager.getLogger(ColorChooser.class);
+    private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ColorChooser.class);
 	private File file;
 	private JFrame parentFrame;
 	private JTextArea textArea;

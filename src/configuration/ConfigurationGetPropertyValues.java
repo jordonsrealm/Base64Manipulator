@@ -7,13 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 
 public class ConfigurationGetPropertyValues {
 	
-    private static final Logger logger = LogManager.getLogger(ConfigurationGetPropertyValues.class);
+    private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ConfigurationGetPropertyValues.class);
 	
 	private static final String TEXT_WIDTH = "TEXT_WIDTH";
 	private static final String TEXT_HEIGHT = "TEXT_HEIGHT";

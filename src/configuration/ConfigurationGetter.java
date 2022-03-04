@@ -3,13 +3,12 @@ package configuration;
 import java.io.IOException;
 import java.util.Map;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 
 public class ConfigurationGetter {
 
-	public static final Logger logger = LogManager.getLogger(ConfigurationGetter.class);
+	public static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ConfigurationGetter.class);
 	
 	private Map<String, String> properties;
 	private static final String TEXT_WIDTH = "TEXT_WIDTH";

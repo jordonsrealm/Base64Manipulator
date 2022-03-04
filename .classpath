@@ -9,7 +9,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/Justin T/Downloads/apache-log4j-2.12.3-bin/apache-log4j-2.12.3-bin/log4j-1.2-api-2.12.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Justin T/Downloads/apache-log4j-2.12.3-bin/apache-log4j-2.12.3-bin/log4j-core-2.12.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Justin T/Downloads/apache-log4j-2.12.3-bin/apache-log4j-2.12.3-bin/log4j-core-2.12.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Justin T/Downloads/apache-log4j-2.12.3-bin/apache-log4j-2.12.3-bin/log4j-api-2.12.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
